@@ -14,16 +14,15 @@ interface Product {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div>
-      <form (submit)="openPortal($event)" class="flex gap-2">
+      <form (submit)="openPortal($event)">
         <input
           required
           type="email"
           name="email"
           [(ngModel)]="email"
           placeholder="Email"
-          class="px-4 py-2 text-base border rounded-lg w-[260px] focus:outline-none focus:border-black"
         />
-        <button type="submit" class="px-6 py-2 text-base bg-black text-white rounded-lg hover:opacity-80 transition">Continue</button>
+        <button type="submit">Continue</button>
       </form>
       <div class="w-[360px] max-w-[90%] flex flex-col gap-3">
         @if (loading()) {
@@ -38,7 +37,6 @@ interface Product {
               <a
                 target="_blank"
                 [href]="'/checkout?products=' + product.id"
-                class="block text-center px-4 py-3 border rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-900 transition"
               >
                 Buy {{ product.name }}
               </a>
