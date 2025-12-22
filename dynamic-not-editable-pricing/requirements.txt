@@ -1,4 +1,3 @@
 python-dotenv
 polar-sdk
-upstash-redis
 fastapi[standard]
