@@ -9,6 +9,8 @@ load_dotenv()
 
 app = FastAPI()
 
+product_id = "a-b-c-d"
+
 @app.get("/{amount}")
 def open_checkout(amount: int):
     polar = Polar(access_token=getenv("POLAR_API_KEY"))
