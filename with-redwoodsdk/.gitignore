@@ -5,6 +5,9 @@ node_modules/
 dist/
 .wrangler/
 
+# Generated types
+worker-configuration.d.ts
+
 # Environment
 .env
 .dev.vars
