@@ -2,11 +2,7 @@
 
 # Getting started with Polar and RedwoodSDK
 
-## Prerequisites
-
-- Node.js 18+ installed on your system
-- A Polar account with API access
-- Cloudflare account (for deployment)
+A minimal example demonstrating Polar payments integration using RedwoodSDK (React on Cloudflare Workers).
 
 ## Clone the repository
 
@@ -14,42 +10,41 @@
 npx degit polarsource/examples/with-redwoodsdk ./with-redwoodsdk
 ```
 
-## Setup
+## How to use
 
-1. Install dependencies (this will also generate the environment types):
+1. Update the `wrangler.jsonc` file with the environment variables:
+
+```jsonc
+"vars": {
+  "POLAR_MODE": "sandbox",
+  "POLAR_ACCESS_TOKEN": "polar_oat_...",
+  "POLAR_WEBHOOK_SECRET": "polar_whs_...",
+  "POLAR_SUCCESS_URL": "http://localhost:5173/"
+}
+```
+
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Configure environment variables:
-
-Update the `wrangler.jsonc` file with your Polar credentials:
-
-- `POLAR_ACCESS_TOKEN` - Your Polar access token
-- `POLAR_WEBHOOK_SECRET` - Your webhook secret
-- `POLAR_MODE` - `sandbox` or `production`
-
-## Development
-
-Start the development server:
+3. Run the development server:
 
 ```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`.
+4. Open `http://localhost:5173/` to see your products and checkout links.
 
 ## Features
 
-- **Home Page (`/`)**: Displays all available products with checkout links
-- **Products API (`/api/products`)**: Fetches available products from Polar
-- **Checkout (`/api/checkout`)**: Creates a checkout session and redirects
-- **Customer Portal (`/api/portal`)**: Customer subscription management
-- **Webhooks (`/api/polar/webhooks`)**: Handles Polar webhook events
+- **Checkout** - Redirect to Polar checkout (`/api/checkout?product=PRODUCT_ID`)
+- **Customer Portal** - Access customer portal by email (`/api/portal?email=EMAIL`)
+- **Webhooks** - Receive Polar events at `/polar/webhooks`
 
-## Deploy
+## Learn More
 
-```bash
-npm run deploy
-```
+- [Polar Documentation](https://docs.polar.sh/)
+- [RedwoodSDK Documentation](https://docs.rwsdk.com/)
+- [Cloudflare Workers Documentation](https://developers.cloudflare.com/workers)

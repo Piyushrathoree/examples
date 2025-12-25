@@ -1,17 +1,49 @@
 {
-  "name": "with-redwoodsdk",
+  "name": "@redwoodjs/starter",
+  "version": "1.0.0",
+  "description": "A bare-bones RedwoodSDK starter",
+  "main": "index.js",
   "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "private": true,
   "scripts": {
-    "postinstall": "wrangler types",
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify"
+    "build": "vite build",
+    "dev": "vite dev",
+    "dev:init": "rw-scripts dev-init",
+    "preview": "vite preview",
+    "worker:run": "rw-scripts worker-run",
+    "clean": "npm run clean:vite",
+    "clean:vite": "rm -rf ./node_modules/.vite",
+    "release": "rw-scripts ensure-deploy-env && npm run clean && npm run build && wrangler deploy",
+    "generate": "rw-scripts ensure-env && wrangler types --include-runtime false",
+    "check": "npm run generate && npm run types",
+    "types": "tsc"
   },
   "dependencies": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-server-dom-webpack": "19.2.3",
+    "rwsdk": "1.0.0-beta.42",
     "@polar-sh/sdk": "^0.41.5",
-    "@polar-sh/hono": "^0.4.0",
-    "hono": "^4.10.6"
+    "standardwebhooks": "^1.0.0"
   },
   "devDependencies": {
-    "wrangler": "^4.4.0"
+    "@cloudflare/vite-plugin": "1.16.1",
+    "@cloudflare/workers-types": "4.20251202.0",
+    "@types/node": "~24.5.2",
+    "@types/react": "19.1.2",
+    "@types/react-dom": "19.1.2",
+    "typescript": "5.8.3",
+    "vite": "7.2.6",
+    "wrangler": "4.52.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp",
+      "workerd"
+    ]
   }
 }
