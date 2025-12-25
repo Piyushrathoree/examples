@@ -16,7 +16,7 @@ npx degit polarsource/examples/with-redwoodsdk ./with-redwoodsdk
 
 ## Setup
 
-1. Install dependencies:
+1. Install dependencies (this will also generate the environment types):
 
 ```bash
 npm install

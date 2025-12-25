@@ -2,6 +2,7 @@
   "name": "with-redwoodsdk",
   "type": "module",
   "scripts": {
+    "postinstall": "wrangler types",
     "dev": "wrangler dev",
     "deploy": "wrangler deploy --minify"
   },
